@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def todolist_view(request):
+    return render(request, 'todolist.html')
