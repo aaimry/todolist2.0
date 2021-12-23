@@ -1,0 +1,29 @@
+[
+{
+    "model": "todolist.todolist",
+    "pk": 1,
+    "fields": {
+        "aim": "attractor homework",
+        "status": "in_progress",
+        "deadline_at": "2021-12-23"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 2,
+    "fields": {
+        "aim": "research",
+        "status": "new",
+        "deadline_at": null
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 3,
+    "fields": {
+        "aim": "exam 6",
+        "status": "new",
+        "deadline_at": "2022-01-15"
+    }
+}
+]
