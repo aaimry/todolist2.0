@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from todolist.models import ToDoList
 
 
@@ -17,5 +17,13 @@ def create_todolist_view(request):
         if deadline_at == '':
             deadline_at = None
         new_aim = ToDoList.objects.create(aim=aim, status=status, deadline_at=deadline_at)
-        context = {"aim_list": new_aim}
-        return render(request, 'todolist_create.html', context)
+        # context = {"aim_list": new_aim}
+        # return render(request, 'todolist_create.html', context)
+        return redirect(f'/check/?pk={new_aim.pk}')
+
+
+def check_list_view(request):
+    pk = request.GET.get('pk')
+    check_list = ToDoList.objects.get(pk=pk)
+    context = {'aim_list': check_list}
+    return render(request, 'check_list.html', context)
