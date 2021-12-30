@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from todolist.models import ToDoList
 from django.urls import reverse
 
@@ -24,7 +24,9 @@ def create_todolist_view(request):
 
 
 def check_list_view(request, pk):
-    # pk = request.GET.get('pk')
-    check_list = ToDoList.objects.get(pk=pk)
+    try:
+        check_list = ToDoList.objects.get(pk=pk)
+    except ToDoList.DoesNotExist:
+        return HttpResponseNotFound('Задача не найдена')
     context = {'aim_list': check_list}
     return render(request, 'check_list.html', context)
