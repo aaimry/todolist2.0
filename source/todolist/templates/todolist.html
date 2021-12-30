@@ -14,6 +14,7 @@
 <h1>To Do List:</h1>
     {% for aim in aim_list %}
         <h4>{{ aim }}</h4>
+        <a href="/check/{{ aim.pk }}">Просмотреть</a>
     {% endfor %}
 
 <a href="add/"> + Добавить новую задачу</a>
