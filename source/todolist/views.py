@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from todolist.models import ToDoList
-
+from django.urls import reverse
 
 def todolist_view(request):
     aim_list = ToDoList.objects.all()
@@ -17,9 +18,9 @@ def create_todolist_view(request):
         if deadline_at == '':
             deadline_at = None
         new_aim = ToDoList.objects.create(aim=aim, status=status, deadline_at=deadline_at)
-        # context = {"aim_list": new_aim}
-        # return render(request, 'todolist_create.html', context)
-        return redirect(f'/check/{new_aim.pk}')
+        # url = reverse('list_check', kwargs={'pk': new_aim.pk})
+        # return HttpResponseRedirect(url)
+        return redirect('list_check', pk=new_aim.pk)
 
 
 def check_list_view(request, pk):
