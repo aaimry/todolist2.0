@@ -1,21 +1,18 @@
-{% load static %}
+{%  extends 'base.html' %}
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet"  href="{% static '/style.css' %}">
-</head>
-<body>
-    <h1>Задача: {{ aim_list.aim }}</h1>
-    <h2>Статус: {{ aim_list.status }}</h2>
-    <h2>Основные моменты:{{ aim_list.description }}</h2>
-    <p>Дедлайн:{{ aim_list.deadline_at }}</p>
-    <a href="{% url 'index' %}"> На главную</a>
+{% block title %} Check aim {{ aim_list.pk }} {% endblock %}
+{%  block content %}
+    <h1>{{ aim_list.aim }}</h1>
+    <h3>Статус: {{ aim_list.status }}</h3>
+    {% if aim_list.description != '' %}
+        <h3>Oписание: {{ aim_list.description}}</h3>
+    {% else %}
+        <h3>Описание: отсутствует</h3>
+    {% endif %}
+    {% if aim.deadline_at is None %}
+        <h3>Время не указано</h3>
+    {% else %}
+        <h3>Дедлайн: {{ aim.deadline_at }}</h3>
+    {% endif %}
+{% endblock %}
 
-</body>
-</html>

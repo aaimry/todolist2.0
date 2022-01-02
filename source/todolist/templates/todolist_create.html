@@ -1,31 +1,24 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static '/style.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Add aim {% endblock %}
+{%  block content %}
 <h1>Добавить задачу:</h1>
+    {% block nav %}{% endblock %}
 <form method="post">
     {% csrf_token %}
- <h3><label>Задача:</label><br/>
-    <input> type="text" name="aim"/><br/>
-     <label>Подробное описание задачи:</label><br/>
-    <textarea name="description"></textarea><br/>
-    <label>Статус:</label><br/>
+ <h3><label>Задача:<br/>
+    <input type="text" name="aim"/></label><br/>
+     <label>Подробное описание задачи:<br/>
+    <textarea name="description"></textarea></label><br/>
+    <label>Статус:<br/>
+{#     {% for status in context %}#}
+{#         <option value="{{ status.0 }}">{{ status.1 }}</option>#}
+{#     {% endfor %}#}
+{#    </label>#}
     <select name="status"><option>Новая</option>
          <option>В процессе</option>
-        <option>Сделано</option></select><br/>
-    <label>Дедлайн:</label><br/>
-    <input type="text" name="deadline_at"/><br/>
-    <br/>
+        <option>Сделано</option></select></label><br/>
+    <label>Дедлайн:<br/>
+    <input type="text" name="deadline_at"/></label><br/>
      <input type="submit" value="Send"/></h3>
 </form>
-<p><a href="{% url 'index' %}">На главную...</a></p>
-</body>
-</html>
+{% endblock %}

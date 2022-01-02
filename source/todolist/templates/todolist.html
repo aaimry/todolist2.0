@@ -1,22 +1,23 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet"  href="{% static '/style.css' %}">
-</head>
-<body>
-<a href="{% url 'list_add' %}"> + Добавить новую задачу</a>
+{% block content %}
 <h1>To Do List:</h1>
-    {% for aim in aim_list %}
-        <h4>{{ aim }}</h4>
-        <a href="{% url 'list_check' aim.pk %}">Просмотреть</a>
-    {% endfor %}
-
-</body>
-</html>
+    <div class="container">
+        <div class="row justify-content-between">
+        {% for aim in aim_list %}
+            <div class="card mb-3" style="width: 20rem;">
+                <div class="card-body">
+                    <p>{{aim.aim}}</p>
+                    <p>Стасус: {{ aim.status }}</p>
+                    {% if aim.deadline_at is None %}
+                        <p>Время не указано</p>
+                    {% else %}
+                        <p>Дедлайн: {{ aim.deadline_at }}</p>
+                    {% endif %}
+                    <a href="{% url 'list_check' aim.pk %}">Просмотреть</a>
+                    </div>
+                </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
