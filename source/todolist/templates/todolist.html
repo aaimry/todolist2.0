@@ -4,20 +4,20 @@
 <h1>To Do List:</h1>
     <div class="container">
         <div class="row justify-content-between">
-        {% for aim in aim_list %}
-            <div class="card mb-3" style="width: 20rem;">
-                <div class="card-body">
-                    <p>{{aim.aim}}</p>
-                    <p>Стасус: {{ aim.status }}</p>
-                    {% if aim.deadline_at is None %}
-                        <p>Время не указано</p>
-                    {% else %}
-                        <p>Дедлайн: {{ aim.deadline_at }}</p>
-                    {% endif %}
-                    <a href="{% url 'list_check' aim.pk %}">Просмотреть</a>
-                    </div>
+            {% for aim in aim_list %}
+                <div class="card mb-3" style="width: 20rem;">
+                    <div class="card-body">
+                        <p>{{aim.aim}}</p>
+                        <p>Стасус: {{aim.get_status_display }}</p>
+                        {% if aim.deadline_at is None %}
+                            <p>Время не указано</p>
+                        {% else %}
+                            <p>Дедлайн: {{ aim.deadline_at }}</p>
+                        {% endif %}
+                        <a href="{% url 'list_check' aim.pk %}">Просмотреть</a>
+                        </div>
                 </div>
-        {% endfor %}
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
