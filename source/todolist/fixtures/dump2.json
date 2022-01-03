@@ -1,0 +1,102 @@
+[
+{
+    "model": "todolist.todolist",
+    "pk": 7,
+    "fields": {
+        "aim": "Сдать код 45 урока",
+        "status": "В процессе",
+        "description": "",
+        "deadline_at": "2021-12-23"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 8,
+    "fields": {
+        "aim": "Купить подарки на нг",
+        "status": "В процессе",
+        "description": "",
+        "deadline_at": "2021-12-30"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 9,
+    "fields": {
+        "aim": "Экзамен по 3д моделированию",
+        "status": "Сделано",
+        "description": "",
+        "deadline_at": null
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 11,
+    "fields": {
+        "aim": "Купить подарки на нг",
+        "status": "in_progress",
+        "description": "",
+        "deadline_at": "2021-12-31"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 18,
+    "fields": {
+        "aim": "задача",
+        "status": "В процессе",
+        "description": "",
+        "deadline_at": "2022-01-03"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 22,
+    "fields": {
+        "aim": "поездка в каракол",
+        "status": "in_progress",
+        "description": "собрать вещи,взять сноуборд в прокате, подъем в 6",
+        "deadline_at": "2022-01-03"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 26,
+    "fields": {
+        "aim": "dssdg",
+        "status": "Новая",
+        "description": "",
+        "deadline_at": "2021-12-31"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 27,
+    "fields": {
+        "aim": "rsgssg",
+        "status": "Сделано",
+        "description": "",
+        "deadline_at": "2021-12-23"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 39,
+    "fields": {
+        "aim": "посмотреть вебинар",
+        "status": "В процессе",
+        "description": "",
+        "deadline_at": null
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 40,
+    "fields": {
+        "aim": "fesefsd",
+        "status": "Новая",
+        "description": "fsfsfs",
+        "deadline_at": null
+    }
+}
+]
