@@ -1,14 +1,3 @@
 {% csrf_token %}
-<h3><label>Задача:<br/>
-    <input type="text" name="aim" value="{{ aim_list.aim }}"/></label><br/>
-    <label>Подробное описание задачи:<br/>
-        <textarea name="description">{{ aim_list.description }}</textarea></label><br/>
-    <label>Статус:<br/>
-        <select name="status">
-            <option>Новая</option>
-            <option>В процессе</option>
-            <option>Сделано</option>
-        </select></label><br/>
-    <label>Дедлайн:<br/>
-        <input type="text" name="deadline_at" value="{{ aim_list.deadline_at }}"/></label><br/>
-    <input type="submit" value="{{ button_text }}"/></h3>
+{{ form.as_p }}
+<input type="submit" value="{{ button_text }}" /></h3>
