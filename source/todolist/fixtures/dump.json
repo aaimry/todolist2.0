@@ -1,29 +1,52 @@
 [
 {
     "model": "todolist.todolist",
-    "pk": 1,
+    "pk": 13,
     "fields": {
-        "aim": "attractor homework",
-        "status": "in_progress",
-        "deadline_at": "2021-12-23"
+        "aim": "контрольная №6",
+        "status": "new",
+        "description": "время 11:00\r\nсдать до 19:00",
+        "deadline_at": "2022-01-08"
     }
 },
 {
     "model": "todolist.todolist",
-    "pk": 2,
+    "pk": 14,
     "fields": {
-        "aim": "research",
+        "aim": "посмотреть вебинар",
+        "status": "in_progress",
+        "description": "вебинар 23 и 24",
+        "deadline_at": "2022-01-07"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 15,
+    "fields": {
+        "aim": "встреча",
+        "status": "done",
+        "description": "встр с подругой",
+        "deadline_at": "2021-12-27"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 16,
+    "fields": {
+        "aim": "купить хлеб",
         "status": "new",
+        "description": "Отсутстувет",
         "deadline_at": null
     }
 },
 {
     "model": "todolist.todolist",
-    "pk": 3,
+    "pk": 17,
     "fields": {
-        "aim": "exam 6",
+        "aim": "не покупать хлеб",
         "status": "new",
-        "deadline_at": "2022-01-15"
+        "description": "Отсутстувет",
+        "deadline_at": null
     }
 }
 ]
