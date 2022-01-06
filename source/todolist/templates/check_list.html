@@ -11,8 +11,8 @@
 {% endblock %}
 {% block content %}
     <h1>{{ aim_list.aim }}</h1>
-    <h3>Статус: {{ aim_list.status }}</h3>
-    {% if aim_list.description == None %}
+    <h3>Статус: {{ aim_list.get_status_display }}</h3>
+    {% if aim_list.description == '' %}
         <h3>Описание отсутствует</h3>
     {% else %}
         <h3>Описание: {{ aim_list.description }}</h3>

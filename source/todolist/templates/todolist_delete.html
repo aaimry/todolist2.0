@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block content %}
     {% csrf_token %}
     <form action="{% url 'list_delete' aim_list.pk %}" method="POST">
@@ -6,5 +7,5 @@
         <h2>Вы хотите удалить эту задачу {{ aim_list.aim }}</h2>
         <input type="submit" value="Да">
     </form>
-    <a href="{% url 'list_check' aim_list.pk %}" class="btn bg-light stretched-link" style="color: black">Нет</a>
+    <a class="btn bg-light" style="color: black" href="{% url 'list_check' aim_list.pk %}" >Нет</a>
 {% endblock %}
