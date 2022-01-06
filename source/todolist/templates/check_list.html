@@ -1,17 +1,25 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block title %} Check aim {{ aim_list.pk }} {% endblock %}
-{%  block content %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{% url 'list_update' aim_list.pk %}">Update aim</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{% url 'list_delete' aim_list.pk %}">Delete aim</a>
+    </li>
+{% endblock %}
+{% block content %}
     <h1>{{ aim_list.aim }}</h1>
     <h3>Статус: {{ aim_list.status }}</h3>
-    {% if aim_list.deadline_at == None %}
-    <h3> Время отсутствует</h3>
-    {% else %}
-    <h3>Дедлайн: {{ aim_list.deadline_at }}</h3>
-    {% endif %}
     {% if aim_list.description == None %}
-    <h3>Описание отсутствует</h3>
+        <h3>Описание отсутствует</h3>
     {% else %}
-    <h3>Описание: {{ aim_list.description}}</h3>
+        <h3>Описание: {{ aim_list.description }}</h3>
+    {% endif %}
+    {% if aim_list.deadline_at == None %}
+        <h3> Время отсутствует</h3>
+    {% else %}
+        <h3>Дедлайн: {{ aim_list.deadline_at }}</h3>
     {% endif %}
 {% endblock %}
