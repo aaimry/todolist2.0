@@ -8,7 +8,7 @@ class ToDoList(models.Model):
     status_choices = [('new', 'Новая'), ('in_progress', 'В процессе'), ('done', 'Сделано')]
     aim = models.CharField(max_length=200, null=False, blank=False, verbose_name='Задача')
     status = models.CharField(max_length=11, choices=status_choices, default='new', verbose_name='Статус')
-    description = models.CharField(max_length=2000,  verbose_name='Подробное описание')
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Подробное описание')
     deadline_at = models.DateField(null=True, blank=True, verbose_name='Дедлайн')
 
     def __str__(self):
