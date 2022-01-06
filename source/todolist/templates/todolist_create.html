@@ -1,20 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Add aim {% endblock %}
-{%  block content %}
-<h1>Добавить задачу:</h1>
-    {% block nav %}{% endblock %}
-<form method="post">
-    {% csrf_token %}
- <h3><label>Задача:<br/>
-    <input type="text" name="aim"/></label><br/>
-     <label>Подробное описание задачи:<br/>
-    <textarea name="description"></textarea></label><br/>
-    <label>Статус:<br/>
-    <select name="status"><option>Новая</option>
-         <option>В процессе</option>
-        <option>Сделано</option></select></label><br/>
-    <label>Дедлайн:<br/>
-    <input type="text" name="deadline_at"/></label><br/>
-     <input type="submit" value="Send"/></h3>
-</form>
+{% block nav %}{% endblock %}
+{% block content %}
+    <h1>Добавить задачу:</h1>
+    <form method="post">
+        {% include 'partial/form.html' with button_text='Send'%}
+    </form>
 {% endblock %}
