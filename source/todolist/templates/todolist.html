@@ -7,12 +7,8 @@
                 <div class="card mb-3" style="width: 20rem;">
                     <div class="card-body">
                         <p>{{ aim.aim }}</p>
-                        <p>Стасус: {{ aim.get_status_display }}</p>
-                        {% if aim.deadline_at != None %}
-                            <p>Дедлайн: {{ aim.deadline_at }}</p>
-                        {% else %}
-                            <p>Время не указано</p>
-                        {% endif %}
+                        <p>Стасус: {{ aim.status }}</p>
+                        <p>Тип: {{aim.type  }} </p>
                         <a href="{% url 'list_check' aim.pk %}">Просмотреть</a>
                     </div>
                 </div>
