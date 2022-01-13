@@ -1,0 +1,140 @@
+[
+{
+    "model": "todolist.statuschoice",
+    "pk": 1,
+    "fields": {
+        "status_obj": "new"
+    }
+},
+{
+    "model": "todolist.statuschoice",
+    "pk": 2,
+    "fields": {
+        "status_obj": "in_progress"
+    }
+},
+{
+    "model": "todolist.statuschoice",
+    "pk": 3,
+    "fields": {
+        "status_obj": "done"
+    }
+},
+{
+    "model": "todolist.typechoice",
+    "pk": 1,
+    "fields": {
+        "type_obj": "task"
+    }
+},
+{
+    "model": "todolist.typechoice",
+    "pk": 2,
+    "fields": {
+        "type_obj": "bug"
+    }
+},
+{
+    "model": "todolist.typechoice",
+    "pk": 3,
+    "fields": {
+        "type_obj": "enhancement"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 7,
+    "fields": {
+        "aim": "kn kxc",
+        "description": "m vsd vsd. v",
+        "type": 2,
+        "status": 3,
+        "create_date": "2022-01-13T12:22:46.211Z",
+        "update_date": "2022-01-13T12:22:46.211Z"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 8,
+    "fields": {
+        "aim": "dlfnsdlf",
+        "description": "wjngwljrngw",
+        "type": 1,
+        "status": 1,
+        "create_date": "2022-01-13T12:29:46.045Z",
+        "update_date": "2022-01-13T12:29:46.045Z"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 9,
+    "fields": {
+        "aim": "oplatit kursy",
+        "description": "14.01.21",
+        "type": 2,
+        "status": 1,
+        "create_date": "2022-01-13T12:27:45.007Z",
+        "update_date": "2022-01-13T12:27:45.007Z"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 10,
+    "fields": {
+        "aim": "test1",
+        "description": "Отсутстувет",
+        "type": 3,
+        "status": 3,
+        "create_date": "2022-01-13T12:28:02.211Z",
+        "update_date": "2022-01-13T12:28:02.211Z"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 11,
+    "fields": {
+        "aim": "test2",
+        "description": "dfknelkefnl",
+        "type": 2,
+        "status": 2,
+        "create_date": "2022-01-13T12:28:16.761Z",
+        "update_date": "2022-01-13T12:28:16.762Z"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 12,
+    "fields": {
+        "aim": "test3",
+        "description": "Отсутстувет",
+        "type": 1,
+        "status": 3,
+        "create_date": "2022-01-13T12:28:27.527Z",
+        "update_date": "2022-01-13T12:28:27.527Z"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 14,
+    "fields": {
+        "aim": "finish code",
+        "description": "lvnbslnb",
+        "type": 1,
+        "status": 1,
+        "create_date": "2022-01-13T12:28:57.636Z",
+        "update_date": "2022-01-13T12:28:57.636Z"
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 15,
+    "fields": {
+        "aim": "test4",
+        "description": "vsjvnsjn",
+        "type": 3,
+        "status": 2,
+        "create_date": "2022-01-13T12:30:13.781Z",
+        "update_date": "2022-01-13T12:30:13.781Z"
+    }
+}
+]
