@@ -18,9 +18,7 @@ class TypeChoice(models.Model):
 class ToDoList(models.Model):
     aim = models.CharField(max_length=200, null=False, blank=False, verbose_name='Задача')
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Подробное описание')
-    type = models.ManyToManyField('todolist.TypeChoice', through='todolist.AimType',
-                                  through_fields=('aim', 'type'),
-                                  related_name='aims', verbose_name='Тип')
+    type = models.ManyToManyField('todolist.TypeChoice', related_name='aims')
     status = models.ForeignKey('todolist.StatusChoice', on_delete=models.PROTECT, default='new', related_name='status',
                                verbose_name='Статус')
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
@@ -33,13 +31,3 @@ class ToDoList(models.Model):
         db_table = 'ToDoList'
         verbose_name = 'Список дел'
         verbose_name_plural = 'Списки дел'
-
-
-class AimType(models.Model):
-    aim = models.ForeignKey('todolist.ToDoList', on_delete=models.CASCADE, related_name='aim_type',
-                            verbose_name='Задача')
-    type = models.ForeignKey('todolist.TypeChoice', on_delete=models.CASCADE, related_name='type_aim',
-                             verbose_name='Тип')
-
-    def __str__(self):
-        return f"{self.aim} | {self.type}"
