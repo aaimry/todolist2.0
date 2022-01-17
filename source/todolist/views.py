@@ -6,10 +6,13 @@ from todolist.forms import ToDoListForm
 from todolist.models import ToDoList
 
 
-class IndexView(View):
-    def get(self, request):
+class IndexView(TemplateView):
+    template_name = 'todolist.html'
+
+    def get_context_data(self, **kwargs):
         aim_list = ToDoList.objects.all()
-        return render(request, 'todolist.html', {'aim_list': aim_list})
+        kwargs['aim_list'] = aim_list
+        return super().get_context_data(**kwargs)
 
 
 class CreateView(View):
@@ -22,11 +25,12 @@ class CreateView(View):
         if form.is_valid():
             aim = form.cleaned_data.get('aim')
             status = form.cleaned_data.get('status')
-            type = form.cleaned_data.get('type')
             description = form.cleaned_data.get('description')
             if description == '':
                 description = 'Отсутстувет'
-            new_aim = ToDoList.objects.create(aim=aim, description=description, type=type, status=status)
+            type = form.cleaned_data.pop('type')
+            new_aim = ToDoList.objects.create(aim=aim, description=description, status=status)
+            new_aim.type.set(type)
             return redirect('list_check', pk=new_aim.pk)
         return render(request, 'todolist_create.html', {'form': form})
 
@@ -46,7 +50,7 @@ class UpdateView(View):
         form = ToDoListForm(initial={
             'aim': aim_list.aim,
             'description': aim_list.description,
-            'type': aim_list.type,
+            'type': aim_list.type.all(),
             'status': aim_list.status,
         })
         return render(request, 'updatelist.html', {'aim_list': aim_list, 'form': form})
@@ -57,7 +61,8 @@ class UpdateView(View):
         if form.is_valid():
             aim_list.aim = form.cleaned_data.get('aim')
             aim_list.status = form.cleaned_data.get('status')
-            aim_list.type = form.cleaned_data.get('type')
+            type = form.cleaned_data.get('type')
+            aim_list.type.set(type)
             aim_list.description = form.cleaned_data.get('description')
             if aim_list.description == '':
                 aim_list.description = 'Отсутстувет'
