@@ -3,138 +3,101 @@
     "model": "todolist.statuschoice",
     "pk": 1,
     "fields": {
-        "status_obj": "new"
+        "status_obj": "New"
     }
 },
 {
     "model": "todolist.statuschoice",
     "pk": 2,
     "fields": {
-        "status_obj": "in_progress"
+        "status_obj": "In Progress"
     }
 },
 {
     "model": "todolist.statuschoice",
     "pk": 3,
     "fields": {
-        "status_obj": "done"
+        "status_obj": "Done"
     }
 },
 {
     "model": "todolist.typechoice",
     "pk": 1,
     "fields": {
-        "type_obj": "task"
+        "type_obj": "Task"
     }
 },
 {
     "model": "todolist.typechoice",
     "pk": 2,
     "fields": {
-        "type_obj": "bug"
+        "type_obj": "Bug"
     }
 },
 {
     "model": "todolist.typechoice",
     "pk": 3,
     "fields": {
-        "type_obj": "enhancement"
+        "type_obj": "Enhancement"
     }
 },
 {
     "model": "todolist.todolist",
-    "pk": 7,
+    "pk": 1,
     "fields": {
-        "aim": "kn kxc",
-        "description": "m vsd vsd. v",
-        "type": 2,
-        "status": 3,
-        "create_date": "2022-01-13T12:22:46.211Z",
-        "update_date": "2022-01-13T12:22:46.211Z"
-    }
-},
-{
-    "model": "todolist.todolist",
-    "pk": 8,
-    "fields": {
-        "aim": "dlfnsdlf",
-        "description": "wjngwljrngw",
-        "type": 1,
+        "aim": "task1",
+        "description": "skdkakdka",
         "status": 1,
-        "create_date": "2022-01-13T12:29:46.045Z",
-        "update_date": "2022-01-13T12:29:46.045Z"
+        "create_date": "2022-01-17T08:09:38.652Z",
+        "update_date": "2022-01-17T08:09:38.652Z",
+        "type": [
+            3
+        ]
     }
 },
 {
     "model": "todolist.todolist",
-    "pk": 9,
+    "pk": 3,
     "fields": {
-        "aim": "oplatit kursy",
-        "description": "14.01.21",
-        "type": 2,
+        "aim": "ya ne ponimayu chto delayu",
+        "description": "sdvsdvs",
         "status": 1,
-        "create_date": "2022-01-13T12:27:45.007Z",
-        "update_date": "2022-01-13T12:27:45.007Z"
+        "create_date": "2022-01-17T11:09:16.676Z",
+        "update_date": "2022-01-17T11:09:16.676Z",
+        "type": [
+            1,
+            2,
+            3
+        ]
     }
 },
 {
     "model": "todolist.todolist",
-    "pk": 10,
+    "pk": 4,
     "fields": {
-        "aim": "test1",
+        "aim": "Karlygach, spasibo!",
+        "description": "teper shushut ponimayu",
+        "status": 1,
+        "create_date": "2022-01-17T11:12:06.446Z",
+        "update_date": "2022-01-17T11:12:06.446Z",
+        "type": [
+            3
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 5,
+    "fields": {
+        "aim": "sfdsvs",
         "description": "Отсутстувет",
-        "type": 3,
-        "status": 3,
-        "create_date": "2022-01-13T12:28:02.211Z",
-        "update_date": "2022-01-13T12:28:02.211Z"
-    }
-},
-{
-    "model": "todolist.todolist",
-    "pk": 11,
-    "fields": {
-        "aim": "test2",
-        "description": "dfknelkefnl",
-        "type": 2,
         "status": 2,
-        "create_date": "2022-01-13T12:28:16.761Z",
-        "update_date": "2022-01-13T12:28:16.762Z"
-    }
-},
-{
-    "model": "todolist.todolist",
-    "pk": 12,
-    "fields": {
-        "aim": "test3",
-        "description": "Отсутстувет",
-        "type": 1,
-        "status": 3,
-        "create_date": "2022-01-13T12:28:27.527Z",
-        "update_date": "2022-01-13T12:28:27.527Z"
-    }
-},
-{
-    "model": "todolist.todolist",
-    "pk": 14,
-    "fields": {
-        "aim": "finish code",
-        "description": "lvnbslnb",
-        "type": 1,
-        "status": 1,
-        "create_date": "2022-01-13T12:28:57.636Z",
-        "update_date": "2022-01-13T12:28:57.636Z"
-    }
-},
-{
-    "model": "todolist.todolist",
-    "pk": 15,
-    "fields": {
-        "aim": "test4",
-        "description": "vsjvnsjn",
-        "type": 3,
-        "status": 2,
-        "create_date": "2022-01-13T12:30:13.781Z",
-        "update_date": "2022-01-13T12:30:13.781Z"
+        "create_date": "2022-01-17T11:42:56.911Z",
+        "update_date": "2022-01-17T11:42:56.911Z",
+        "type": [
+            1,
+            2
+        ]
     }
 }
 ]
