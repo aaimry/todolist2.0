@@ -5,10 +5,10 @@ from todolist.models import ToDoList, StatusChoice, TypeChoice
 
 
 class ToDoListAdmin(admin.ModelAdmin):
-    list_display = ['id', 'aim', 'type', 'status']
+    list_display = ['id', 'aim', 'status']
     list_filter = ['aim']
     search_fields = ['aim', 'status']
-    fields = ['aim', 'description', 'type',  'status']
+    fields = ['aim', 'description',  'status']
 
 
 admin.site.register(ToDoList, ToDoListAdmin)
