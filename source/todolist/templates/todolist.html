@@ -8,7 +8,10 @@
                     <div class="card-body">
                         <p>{{ aim.aim }}</p>
                         <p>Стасус: {{ aim.status }}</p>
-                        <p>Тип: {{aim.type  }} </p>
+                        <p>Тип:
+                           {% for type in aim.type.all %}
+                                {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
+                           {% endfor %}</p>
                         <a href="{% url 'list_check' aim.pk %}">Просмотреть</a>
                     </div>
                 </div>
