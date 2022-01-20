@@ -46,11 +46,12 @@
     "pk": 1,
     "fields": {
         "aim": "task1",
-        "description": "skdkakdka",
+        "description": "53535353",
         "status": 1,
         "create_date": "2022-01-17T08:09:38.652Z",
         "update_date": "2022-01-17T08:09:38.652Z",
         "type": [
+            1,
             3
         ]
     }
@@ -97,6 +98,64 @@
         "type": [
             1,
             2
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 17,
+    "fields": {
+        "aim": "111112",
+        "description": "11111",
+        "status": 1,
+        "create_date": "2022-01-20T09:30:46.036Z",
+        "update_date": "2022-01-20T09:30:46.036Z",
+        "type": [
+            3
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 18,
+    "fields": {
+        "aim": "abcdefghijklmnop",
+        "description": "",
+        "status": 1,
+        "create_date": "2022-01-20T09:46:49.333Z",
+        "update_date": "2022-01-20T09:46:49.333Z",
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 20,
+    "fields": {
+        "aim": "111111111",
+        "description": "1111111113",
+        "status": 3,
+        "create_date": "2022-01-20T10:03:34.167Z",
+        "update_date": "2022-01-20T10:03:34.167Z",
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 21,
+    "fields": {
+        "aim": "fvlksnflvknsf",
+        "description": "flvsndvlksnvd",
+        "status": 3,
+        "create_date": "2022-01-20T10:12:46.592Z",
+        "update_date": "2022-01-20T10:12:46.592Z",
+        "type": [
+            1,
+            2,
+            3
         ]
     }
 }
