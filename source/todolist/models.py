@@ -1,5 +1,7 @@
 from django.db import models
 
+from todolist.validators import MinLengthValidator, MaxLengthValidator
+
 
 class StatusChoice(models.Model):
     status_obj = models.CharField(max_length=30, verbose_name='Статус')
@@ -16,9 +18,11 @@ class TypeChoice(models.Model):
 
 
 class ToDoList(models.Model):
-    aim = models.CharField(max_length=200, null=False, blank=False, verbose_name='Задача')
-    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Подробное описание')
-    type = models.ManyToManyField('todolist.TypeChoice', related_name='aims')
+    aim = models.CharField(max_length=200, null=False, blank=False, verbose_name='Задача',
+                           validators=(MaxLengthValidator(200), MinLengthValidator(5)))
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Подробное описание',
+                                   validators=(MaxLengthValidator(2000), MinLengthValidator(5)))
+    type = models.ManyToManyField('todolist.TypeChoice', related_name='aims', verbose_name='Тип')
     status = models.ForeignKey('todolist.StatusChoice', on_delete=models.PROTECT, default='new', related_name='status',
                                verbose_name='Статус')
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
