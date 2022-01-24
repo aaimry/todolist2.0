@@ -60,7 +60,7 @@
     "model": "todolist.todolist",
     "pk": 3,
     "fields": {
-        "aim": "ya ne ponimayu chto delayu",
+        "aim": "test # 6",
         "description": "sdvsdvs",
         "status": 1,
         "create_date": "2022-01-17T11:09:16.676Z",
@@ -111,6 +111,7 @@
         "create_date": "2022-01-20T09:30:46.036Z",
         "update_date": "2022-01-20T09:30:46.036Z",
         "type": [
+            1,
             3
         ]
     }
@@ -119,8 +120,8 @@
     "model": "todolist.todolist",
     "pk": 18,
     "fields": {
-        "aim": "abcdefghijklmnop",
-        "description": "",
+        "aim": "bug 222",
+        "description": "dnladknfs",
         "status": 1,
         "create_date": "2022-01-20T09:46:49.333Z",
         "update_date": "2022-01-20T09:46:49.333Z",
@@ -154,8 +155,108 @@
         "update_date": "2022-01-20T10:12:46.592Z",
         "type": [
             1,
+            3
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 23,
+    "fields": {
+        "aim": "12345",
+        "description": "123456",
+        "status": 1,
+        "create_date": "2022-01-20T10:50:31.814Z",
+        "update_date": "2022-01-20T10:50:31.814Z",
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 25,
+    "fields": {
+        "aim": "laba python",
+        "description": "laba python",
+        "status": 1,
+        "create_date": "2022-01-24T08:39:49.425Z",
+        "update_date": "2022-01-24T08:39:49.425Z",
+        "type": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 26,
+    "fields": {
+        "aim": "bug bug bug",
+        "description": "123456",
+        "status": 1,
+        "create_date": "2022-01-24T08:40:10.703Z",
+        "update_date": "2022-01-24T08:40:10.703Z",
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 27,
+    "fields": {
+        "aim": "zadanie",
+        "description": "zadanie 1 kfsdfsd",
+        "status": 3,
+        "create_date": "2022-01-24T08:40:41.865Z",
+        "update_date": "2022-01-24T08:40:41.865Z",
+        "type": [
+            1,
             2,
             3
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 28,
+    "fields": {
+        "aim": "BUG TO FIX",
+        "description": "BUG TO FIX",
+        "status": 2,
+        "create_date": "2022-01-24T09:00:07.084Z",
+        "update_date": "2022-01-24T09:00:07.084Z",
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 29,
+    "fields": {
+        "aim": "Bug #56",
+        "description": "cdslfm",
+        "status": 3,
+        "create_date": "2022-01-24T09:07:15.096Z",
+        "update_date": "2022-01-24T09:07:15.096Z",
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 30,
+    "fields": {
+        "aim": "testovye zadachi",
+        "description": "",
+        "status": 2,
+        "create_date": "2022-01-24T09:56:33.074Z",
+        "update_date": "2022-01-24T09:56:33.074Z",
+        "type": [
+            2
         ]
     }
 }
