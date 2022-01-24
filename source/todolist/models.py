@@ -29,7 +29,7 @@ class ToDoList(models.Model):
     update_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата редактировнаия')
 
     def __str__(self):
-        return f"{self.aim}{self.description}{self.type}{self.status}"
+        return f"{self.aim} : {self.description} | {self.status} "
 
     class Meta:
         db_table = 'ToDoList'
