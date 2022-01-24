@@ -20,9 +20,9 @@ class ToDoListForm(forms.ModelForm):
         widgets = {
             'type': forms.CheckboxSelectMultiple
         }
-
-    def clean(self):
-        cleaned_data = super().clean()
-        if cleaned_data['aim'] == cleaned_data['description']:
-            raise ValidationError("Задача и описание не должны быть одинаковыми!")
-        return cleaned_data
+    #
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     if cleaned_data['aim'] == cleaned_data['description']:
+    #         raise ValidationError("Задача и описание не должны быть одинаковыми!")
+    #     return cleaned_data
