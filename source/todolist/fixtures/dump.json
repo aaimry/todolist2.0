@@ -250,13 +250,41 @@
     "model": "todolist.todolist",
     "pk": 30,
     "fields": {
-        "aim": "testovye zadachi",
+        "aim": "testovye zadachi dfdf",
         "description": "",
         "status": 2,
         "create_date": "2022-01-24T09:56:33.074Z",
         "update_date": "2022-01-24T09:56:33.074Z",
         "type": [
             2
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 31,
+    "fields": {
+        "aim": "lalalal",
+        "description": "THE MAGIC KEY",
+        "status": 1,
+        "create_date": "2022-01-26T17:01:25.596Z",
+        "update_date": "2022-01-26T17:01:25.596Z",
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 32,
+    "fields": {
+        "aim": "SOFTCORE",
+        "description": "THE NEIGHBOURHOOD",
+        "status": 2,
+        "create_date": "2022-01-27T07:09:38.059Z",
+        "update_date": "2022-01-27T07:09:38.059Z",
+        "type": [
+            3
         ]
     }
 }
