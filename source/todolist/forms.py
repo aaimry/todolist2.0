@@ -26,3 +26,7 @@ class ToDoListForm(forms.ModelForm):
     #     if cleaned_data['aim'] == cleaned_data['description']:
     #         raise ValidationError("Задача и описание не должны быть одинаковыми!")
     #     return cleaned_data
+
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=30, required=False, label="Найти")
