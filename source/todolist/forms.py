@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from todolist.models import StatusChoice, TypeChoice, ToDoList
+from todolist.models import StatusChoice, TypeChoice, ToDoList, Projects
 
 
 # class ToDoListForm(forms.Form):
@@ -16,7 +16,7 @@ from todolist.models import StatusChoice, TypeChoice, ToDoList
 class ToDoListForm(forms.ModelForm):
     class Meta:
         model = ToDoList
-        exclude = []
+        exclude = ['project']
         widgets = {
             'type': forms.CheckboxSelectMultiple
         }
@@ -30,3 +30,9 @@ class ToDoListForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     search = forms.CharField(max_length=30, required=False, label="Найти")
+
+
+class ProjectsForm(forms.ModelForm):
+    class Meta:
+        model = Projects
+        exclude = []

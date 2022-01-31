@@ -18,6 +18,9 @@ class TypeChoice(models.Model):
 
 
 class ToDoList(models.Model):
+    project = models.ForeignKey('todolist.Projects', on_delete=models.PROTECT,
+                                related_name='project',
+                                verbose_name='Проект')
     aim = models.CharField(max_length=200, null=False, blank=False, verbose_name='Задача',
                            validators=(MaxLengthValidator(200), MinLengthValidator(5)))
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Подробное описание',
@@ -35,3 +38,20 @@ class ToDoList(models.Model):
         db_table = 'ToDoList'
         verbose_name = 'Список дел'
         verbose_name_plural = 'Списки дел'
+
+
+class Projects(models.Model):
+    start_date = models.DateField(null=False, verbose_name='Дата начала', )
+    end_date = models.DateField(null=True, blank=True,  verbose_name='Дата окончания')
+    title = models.CharField(max_length=200, null=False, blank=False, verbose_name='Название проекта',
+                             validators=(MaxLengthValidator(200), MinLengthValidator(5)))
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Описание',
+                                   validators=(MaxLengthValidator(200), MinLengthValidator(5)))
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        db_table = 'Projects'
+        verbose_name = 'Проект'
+        verbose_name_plural = 'Проекты'
