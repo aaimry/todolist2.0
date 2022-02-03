@@ -14,7 +14,9 @@
                         <p>{{ project.title }}</p>
                         <p>{{ project.description }}</p>
                         <p>{{ project.start_date }} - {{ project.end_date}}</p>
-                        <a href="{% url 'projects_check' project.pk %}">Просмотреть проект</a>
+                        <a style="text-decoration: none" href="{% url 'projects_check' project.pk %}">Просмотреть проект</a>
+                        <br>
+                        <a style="text-decoration: none" href="{% url 'projects_delete' project.pk %}">Удалить проект</a>
                     </div>
                 </div>
             {% endfor %}

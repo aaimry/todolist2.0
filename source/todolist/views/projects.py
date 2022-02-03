@@ -1,9 +1,9 @@
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, DeleteView, UpdateView
 from django.shortcuts import get_object_or_404
 
 from todolist.forms import ProjectsForm
-from todolist.models import Projects, ToDoList
+from todolist.models import Projects
 
 
 class ProjectView(ListView):
@@ -35,3 +35,22 @@ class CheckProjectView(DetailView):
         check_project = get_object_or_404(Projects, pk=kwargs.get('object').id)
         context['check_project'] = check_project
         return context
+
+
+class UpdateProjectView(UpdateView):
+    form_class = ProjectsForm
+    template_name = "projects/update.html"
+    model = Projects
+
+    def get_success_url(self):
+        return reverse('projects')
+
+
+class DeleteProjectView(DeleteView):
+    model = Projects
+
+    def get(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('projects')

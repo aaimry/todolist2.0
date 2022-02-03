@@ -2,37 +2,41 @@
 
 {% block title %} Check project {{ projects.pk }} {% endblock %}
 {% block nav %}
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'list_add' check_project.pk %}">Добавить задачу в
-                проект</a>
-        </li>
+    <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{% url 'list_add' check_project.pk %}">Добавить задачу в
+            проект</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{% url 'projects_update' check_project.pk %}">Редактировать
+            проект</a>
+    </li>
 {% endblock %}
 {% block content %}
-<h2>{{ check_project.title }}</h2>
-{% if check_project.description == '' %}
-    <h3>Описание отсутствует</h3>
-{% else %}
-    <h3>Описание: {{ check_project.description }}</h3>
-{% endif %}
-<h3>{{ check_project.start_date }}-{{ check_project.end_date }}</h3>
-<br>
-<h3>Задачи проекта: </h3>
-<div class="container">
-    <div class="row justify-content-between">
-        {% for aim in projects.project.all %}
-            <div class="card mb-3" style="width: 20rem;">
-                <div class="card-body">
-                    <p>{{ aim.aim }}</p>
-                    <p>Стасус: {{ aim.status }}</p>
-                    <p>Тип:
-                        {% for type in aim.type.all %}
-                            {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
-                        {% endfor %}</p>
-                    <a href="{% url 'list_check' aim.pk %}">Просмотреть</a>
+    <h2>{{ check_project.title }}</h2>
+    {% if check_project.description == '' %}
+        <h3>Описание отсутствует</h3>
+    {% else %}
+        <h3>Описание: {{ check_project.description }}</h3>
+    {% endif %}
+    <h3>{{ check_project.start_date }}-{{ check_project.end_date }}</h3>
+    <br>
+    <h3>Задачи проекта: </h3>
+    <div class="container">
+        <div class="row justify-content-between">
+            {% for aim in projects.project.all %}
+                <div class="card mb-3" style="width: 20rem;">
+                    <div class="card-body">
+                        <p>{{ aim.aim }}</p>
+                        <p>Стасус: {{ aim.status }}</p>
+                        <p>Тип:
+                            {% for type in aim.type.all %}
+                                {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
+                            {% endfor %}</p>
+                        <a href="{% url 'list_check' aim.pk %}">Просмотреть</a>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
 {% endblock %}
 
