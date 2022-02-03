@@ -43,22 +43,6 @@
 },
 {
     "model": "todolist.todolist",
-    "pk": 1,
-    "fields": {
-        "project": 1,
-        "aim": "task1",
-        "description": "53535353",
-        "status": 1,
-        "create_date": "2022-01-17T08:09:38.652Z",
-        "update_date": "2022-01-17T08:09:38.652Z",
-        "type": [
-            1,
-            3
-        ]
-    }
-},
-{
-    "model": "todolist.todolist",
     "pk": 4,
     "fields": {
         "project": 1,
@@ -93,43 +77,13 @@
     "pk": 26,
     "fields": {
         "project": 1,
-        "aim": "bug bug bug",
-        "description": "123456",
+        "aim": "attack on titans 4s.21",
+        "description": "7.02.2022",
         "status": 1,
         "create_date": "2022-01-24T08:40:10.703Z",
         "update_date": "2022-01-24T08:40:10.703Z",
         "type": [
-            2
-        ]
-    }
-},
-{
-    "model": "todolist.todolist",
-    "pk": 28,
-    "fields": {
-        "project": 1,
-        "aim": "BUG TO FIX",
-        "description": "BUG TO FIX",
-        "status": 2,
-        "create_date": "2022-01-24T09:00:07.084Z",
-        "update_date": "2022-01-24T09:00:07.084Z",
-        "type": [
-            1
-        ]
-    }
-},
-{
-    "model": "todolist.todolist",
-    "pk": 29,
-    "fields": {
-        "project": 1,
-        "aim": "Bug #56",
-        "description": "cdslfm",
-        "status": 3,
-        "create_date": "2022-01-24T09:07:15.096Z",
-        "update_date": "2022-01-24T09:07:15.096Z",
-        "type": [
-            2
+            3
         ]
     }
 },
@@ -139,7 +93,7 @@
     "fields": {
         "project": 1,
         "aim": "SOFTCORE",
-        "description": "THE NEIGHBOURHOOD",
+        "description": "Sharing my heart\r\nIt's tearing me apart\r\nBut I know I'd miss you, baby, if I left right now\r\nDoing what I can, tryna be a man\r\nAnd every time I kiss you, baby\r\nI can hear the sound of breaking down",
         "status": 2,
         "create_date": "2022-01-27T07:09:38.059Z",
         "update_date": "2022-01-27T07:09:38.059Z",
@@ -150,14 +104,29 @@
 },
 {
     "model": "todolist.todolist",
-    "pk": 43,
+    "pk": 52,
     "fields": {
         "project": 2,
-        "aim": "11111111111",
-        "description": "",
-        "status": 1,
-        "create_date": "2022-01-31T11:39:30.101Z",
-        "update_date": "2022-01-31T11:39:30.101Z",
+        "aim": "kid cudi - mr rager",
+        "description": "Whoa now, hey, Mr. Rager, Mr. Rager\r\nTell me where you're going, tell us where you're headed\r\nI'm off on the adventure\r\nMr. Rager tell me some of your stories, tell us of your travels",
+        "status": 2,
+        "create_date": "2022-02-03T07:40:44.579Z",
+        "update_date": "2022-02-03T07:40:44.579Z",
+        "type": [
+            3
+        ]
+    }
+},
+{
+    "model": "todolist.todolist",
+    "pk": 53,
+    "fields": {
+        "project": 3,
+        "aim": "euphoria 2.5",
+        "description": "07.02.2022",
+        "status": 2,
+        "create_date": "2022-02-03T07:48:18.430Z",
+        "update_date": "2022-02-03T07:48:18.430Z",
         "type": [
             1
         ]
@@ -167,10 +136,10 @@
     "model": "todolist.projects",
     "pk": 1,
     "fields": {
-        "start_date": "2022-01-01",
+        "start_date": "2022-01-21",
         "end_date": "2022-01-27",
         "title": "Main Project",
-        "description": "Project for all homeworks"
+        "description": "homeworks project"
     }
 },
 {
