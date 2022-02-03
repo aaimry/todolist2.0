@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from todolist.validators import MinLengthValidator, MaxLengthValidator
 
@@ -33,6 +34,9 @@ class ToDoList(models.Model):
 
     def __str__(self):
         return f"{self.aim} : {self.description} | {self.status} "
+
+    def get_absolute_url(self):
+        return reverse('list_check', kwargs={'pk': self.pk})
 
     class Meta:
         db_table = 'ToDoList'

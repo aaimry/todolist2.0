@@ -1,9 +1,7 @@
 from django.db.models import Q
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.views import View
-from django.views.generic import FormView, ListView, DetailView, CreateView
-
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from todolist.forms import ToDoListForm, SearchForm
 from todolist.models import ToDoList, Projects
@@ -45,7 +43,7 @@ class IndexView(ListView):
             return self.form.cleaned_data.get("search")
 
 
-class IssuesCreateView(CreateView):
+class TrackerCreateView(CreateView):
     model = ToDoList
     form_class = ToDoListForm
     template_name = 'tracker/todolist_create.html'
@@ -55,11 +53,8 @@ class IssuesCreateView(CreateView):
         form.instance.project = project
         return super().form_valid(form)
 
-    def get_success_url(self):
-        return reverse('list_check', kwargs={'pk': self.object.pk})
 
-
-class CheckListView(DetailView):
+class TrackerCheckListView(DetailView):
     template_name = 'tracker/check_list.html'
     model = ToDoList
 
@@ -71,41 +66,17 @@ class CheckListView(DetailView):
         return context
 
 
-class UpdateView(FormView):
+class TrackerUpdateView(UpdateView):
     form_class = ToDoListForm
-    template_name = 'tracker/updatelist.html'
+    template_name = "tracker/updatelist.html"
+    model = ToDoList
+    context_object_name = 'aim_list'
 
-    def dispatch(self, request, *args, **kwargs):
-        self.aim_list = self.get_object()
-        return super(UpdateView, self).dispatch(request, *args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['aim_list'] = self.aim_list
-        return context
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['instance'] = self.aim_list
-        return kwargs
-
-    def form_valid(self, form):
-        self.aim_list = form.save()
-        return super().form_valid(form)
+class TrackerDeleteView(DeleteView):
+    model = ToDoList
+    template_name = "tracker/todolist_delete.html"
+    context_object_name = 'aim_list'
 
     def get_success_url(self):
-        return reverse('list_check', kwargs={"pk": self.aim_list.pk})
-
-    def get_object(self):
-        return get_object_or_404(ToDoList, pk=self.kwargs.get("pk"))
-
-
-class DeleteView(View):
-    def get(self, request, *args, **kwargs):
-        aim_list = get_object_or_404(ToDoList, pk=kwargs.get('pk'))
-        return render(request, 'tracker/todolist_delete.html', {'aim_list': aim_list})
-
-    def post(self, request, *args, **kwargs):
-        aim_list = get_object_or_404(ToDoList, pk=kwargs.get('pk'))
-        aim_list.delete()
-        return redirect('projects_check', pk=aim_list.project.pk)
+        return reverse('projects_check', kwargs={'pk': self.object.project.pk})
