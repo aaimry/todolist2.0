@@ -2,19 +2,24 @@
 
 {% block title %} Check aim {{ aim_list.pk }} {% endblock %}
 {% block nav %}
-    <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'tracker:list_update' check_list.pk %}">Update aim</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'tracker:list_delete' check_list.pk %}">Delete aim</a>
-    </li>
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'tracker:list_update' check_list.pk %}">Изменить</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'tracker:list_delete' check_list.pk %}">Удалить</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'tracker:project_check' check_list.project.pk %}">Назад</a>
+        </li>
+    {% endif %}
 {% endblock %}
 {% block content %}
     <h1>{{ check_list.aim }}</h1>
     <h3>Тип:
-    {% for type in check_list.type.all %}
-        {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
-    {% endfor %}</h3>
+        {% for type in check_list.type.all %}
+            {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
+        {% endfor %}</h3>
     {% if aim_list.description == '' %}
         <h3>Описание отсутствует</h3>
     {% else %}
