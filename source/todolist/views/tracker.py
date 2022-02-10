@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -43,7 +44,7 @@ class IndexView(ListView):
             return self.form.cleaned_data.get("search")
 
 
-class TrackerCreateView(CreateView):
+class TrackerCreateView(LoginRequiredMixin, CreateView):
     model = ToDoList
     form_class = ToDoListForm
     template_name = 'tracker/todolist_create.html'
@@ -66,14 +67,14 @@ class TrackerCheckListView(DetailView):
         return context
 
 
-class TrackerUpdateView(UpdateView):
+class TrackerUpdateView(LoginRequiredMixin, UpdateView):
     form_class = ToDoListForm
     template_name = "tracker/updatelist.html"
     model = ToDoList
     context_object_name = 'aim_list'
 
 
-class TrackerDeleteView(DeleteView):
+class TrackerDeleteView(LoginRequiredMixin, DeleteView):
     model = ToDoList
     template_name = "tracker/todolist_delete.html"
     context_object_name = 'aim_list'

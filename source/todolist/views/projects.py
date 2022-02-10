@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView, DeleteView, UpdateView
 from django.shortcuts import get_object_or_404
@@ -16,7 +17,7 @@ class ProjectView(ListView):
         return queryset
 
 
-class ProjectCreateView(CreateView):
+class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = Projects
     form_class = ProjectsForm
     template_name = 'projects/create.html'
@@ -37,7 +38,7 @@ class CheckProjectView(DetailView):
         return context
 
 
-class UpdateProjectView(UpdateView):
+class UpdateProjectView(LoginRequiredMixin, UpdateView):
     form_class = ProjectsForm
     template_name = "projects/update.html"
     model = Projects
@@ -46,7 +47,7 @@ class UpdateProjectView(UpdateView):
         return reverse('tracker:index_project')
 
 
-class DeleteProjectView(DeleteView):
+class DeleteProjectView(LoginRequiredMixin, DeleteView):
     model = Projects
 
     def get(self, request, *args, **kwargs):
