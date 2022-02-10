@@ -22,13 +22,13 @@
                     <h3>{{ project.title }}</h3>
                     <h4>{{ project.description }}</h4>
                     <h4>{{ project.start_date }} - {{ project.end_date }}</h4>
-                    <div class=" btn-group me-3">
+                    <div class=" btn-group">
                         <a class="btn btn-primary text-light" style="text-decoration: none"
                            href="{% url 'tracker:project_check' project.pk %}">Просмотреть
                             проект</a>
                         <br>
                         {% if user.is_authenticated %}
-                            <a class="btn btn-primary text-light" style="text-decoration: none"
+                            <a class="btn btn-danger text-light" style="text-decoration: none"
                                href="{% url 'tracker:project_delete' project.pk %}">Удалить
                                 проект</a>
                         {% endif %}
