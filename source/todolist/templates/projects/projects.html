@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block nav %}
      <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'projects_add'%}">+Add new project!</a>
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:project_add'%}">+Add new project!</a>
     </li>
      <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'index'%}">View all aims</a>
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:index'%}">View all aims</a>
     </li>
 {% endblock %}
 {% block content %}
@@ -17,9 +17,9 @@
                         <p>{{ project.title }}</p>
                         <p>{{ project.description }}</p>
                         <p>{{ project.start_date }} - {{ project.end_date}}</p>
-                        <a style="text-decoration: none" href="{% url 'projects_check' project.pk %}">Просмотреть проект</a>
+                        <a style="text-decoration: none" href="{% url 'tracker:project_check' project.pk %}">Просмотреть проект</a>
                         <br>
-                        <a style="text-decoration: none" href="{% url 'projects_delete' project.pk %}">Удалить проект</a>
+                        <a style="text-decoration: none" href="{% url 'tracker:project_delete' project.pk %}">Удалить проект</a>
                     </div>
                 </div>
             {% endfor %}

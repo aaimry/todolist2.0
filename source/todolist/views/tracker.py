@@ -79,4 +79,4 @@ class TrackerDeleteView(DeleteView):
     context_object_name = 'aim_list'
 
     def get_success_url(self):
-        return reverse('projects_check', kwargs={'pk': self.object.project.pk})
+        return reverse('tracker:project_check', kwargs={'pk': self.object.project.pk})

@@ -3,10 +3,10 @@
 {% block title %} Check aim {{ aim_list.pk }} {% endblock %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'list_update' check_list.pk %}">Update aim</a>
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:list_update' check_list.pk %}">Update aim</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'list_delete' check_list.pk %}">Delete aim</a>
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:list_delete' check_list.pk %}">Delete aim</a>
     </li>
 {% endblock %}
 {% block content %}

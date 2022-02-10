@@ -13,7 +13,7 @@
                             {% for type in aim.type.all %}
                                 {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
                             {% endfor %}</p>
-                        <a href="{% url 'list_check' aim.pk %}">Просмотреть</a>
+                        <a href="{% url 'tracker:list_check' aim.pk %}">Просмотреть</a>
                     </div>
                 </div>
             {% endfor %}

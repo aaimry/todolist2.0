@@ -3,11 +3,11 @@
 {% block title %} Check project {{ projects.pk }} {% endblock %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'list_add' check_project.pk %}">Добавить задачу в
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:list_add' check_project.pk %}">Добавить задачу в
             проект</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'projects_update' check_project.pk %}">Редактировать
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:project_update' check_project.pk %}">Редактировать
             проект</a>
     </li>
 {% endblock %}
@@ -32,7 +32,7 @@
                             {% for type in aim.type.all %}
                                 {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
                             {% endfor %}</p>
-                        <a href="{% url 'list_check' aim.pk %}">Просмотреть</a>
+                        <a href="{% url 'tracker:list_check' aim.pk %}">Просмотреть</a>
                     </div>
                 </div>
             {% endfor %}

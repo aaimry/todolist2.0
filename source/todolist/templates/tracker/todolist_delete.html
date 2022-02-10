@@ -2,10 +2,10 @@
 
 {% block content %}
     {% csrf_token %}
-    <form action="{% url 'list_delete' aim_list.pk %}" method="POST">
+    <form action="{% url 'tracker:list_delete' aim_list.pk %}" method="POST">
         {% csrf_token %}
         <h2>Вы хотите удалить эту задачу {{ aim_list.aim }}</h2>
         <input type="submit" value="Да">
     </form>
-    <a class="btn bg-light" style="color: black" href="{% url 'list_check' aim_list.pk %}" >Нет</a>
+    <a class="btn bg-light" style="color: black" href="{% url 'tracker:list_check' aim_list.pk %}" >Нет</a>
 {% endblock %}

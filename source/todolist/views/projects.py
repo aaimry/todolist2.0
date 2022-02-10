@@ -22,7 +22,7 @@ class ProjectCreateView(CreateView):
     template_name = 'projects/create.html'
 
     def get_success_url(self):
-        return reverse('projects_check', kwargs={'pk': self.object.pk})
+        return reverse('tracker:project_check', kwargs={'pk': self.object.pk})
 
 
 class CheckProjectView(DetailView):
@@ -43,7 +43,7 @@ class UpdateProjectView(UpdateView):
     model = Projects
 
     def get_success_url(self):
-        return reverse('projects')
+        return reverse('tracker:index_project')
 
 
 class DeleteProjectView(DeleteView):
@@ -53,4 +53,4 @@ class DeleteProjectView(DeleteView):
         return super().delete(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('projects')
+        return reverse('tracker:index_project')

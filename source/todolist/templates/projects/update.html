@@ -2,7 +2,7 @@
 {% block title %}Update project {% endblock %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'projects_check' projects.pk %}">Back to projects</a>
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:project_check' projects.pk %}">Back to projects</a>
     </li>
 {% endblock %}
 {% block content %}

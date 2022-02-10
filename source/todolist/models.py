@@ -36,7 +36,7 @@ class ToDoList(models.Model):
         return f"{self.aim} : {self.description} | {self.status} "
 
     def get_absolute_url(self):
-        return reverse('list_check', kwargs={'pk': self.pk})
+        return reverse('tracker:list_check', kwargs={'pk': self.pk})
 
     class Meta:
         db_table = 'ToDoList'
