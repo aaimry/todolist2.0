@@ -1,5 +1,4 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -13,7 +12,6 @@ class RegisterView(CreateView):
     template_name = "registration.html"
     form_class = MyUserCreationForm
 
-    # @login_required
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
