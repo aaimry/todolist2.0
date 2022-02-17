@@ -23,6 +23,12 @@ class ProjectCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'projects/create.html'
     permission_required = "todolist.add_projects"
 
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.user.set([self.request.user])
+        self.object.save()
+        return super().form_valid(form)
+
     def has_permission(self):
         return super().has_permission()
 
