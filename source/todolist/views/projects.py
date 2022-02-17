@@ -70,7 +70,7 @@ class DeleteProjectView(PermissionRequiredMixin, DeleteView):
 
 
 class UserInProjectView(PermissionRequiredMixin, UpdateView):
-    permission_required = 'auth.change_user'
+    permission_required = 'auth.add_user'
     form_class = ProjectUserForm
     model = Projects
     template_name = 'user/update.html'

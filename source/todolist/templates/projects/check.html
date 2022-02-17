@@ -2,18 +2,18 @@
 
 {% block title %} Check project {{ projects.pk }} {% endblock %}
 {% block nav %}
-    {% if perms.todolist.add_todolist and user in check_project.user.all%}
+    {% if perms.todolist.add_todolist and user in check_project.user.all %}
         <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{% url 'tracker:list_add' check_project.pk %}">Добавить задачу
                 в проект</a>
         </li>
     {% endif %}
-        {% if perms.todolist.change_projects %}
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{% url 'tracker:project_update' check_project.pk %}">Редактировать
-                    проект</a>
-            </li>
-        {% endif %}
+    {% if perms.todolist.change_projects %}
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'tracker:project_update' check_project.pk %}">Редактировать
+                проект</a>
+        </li>
+    {% endif %}
 {% endblock %}
 {% block content %}
     <h3>Проект: {{ check_project.title }}</h3>
@@ -24,11 +24,18 @@
     {% endif %}
     <h3>{{ check_project.start_date }}-{{ check_project.end_date }}</h3>
     <br>
-    <h3>Пользователи:</h3>
-    {% for user in check_project.user.all %}
-        <p>{{ user.username }}</p>
-    {% endfor %}
-    <a class="btn btn-primary" href="{% url 'tracker:user_update' check_project.pk %}">Изменить пользователей</a>
+    {% if check_project.user.all is None %}
+        <h3>Пользователи не добавлены</h3>
+    {% else %}
+        <h3>Пользователи:</h3>
+        {% for user in check_project.user.all %}
+            <p>{{ user.username }}</p>
+        {% endfor %}
+        {% if perms.auth.add_user and user in check_project.user.all %}
+            <a class="btn btn-primary" href="{% url 'tracker:user_update' check_project.pk %}">Изменить
+                пользователей</a>
+        {% endif %}
+    {% endif %}
     <br>
     <h3>Задачи проекта: </h3>
     <div class="container">
