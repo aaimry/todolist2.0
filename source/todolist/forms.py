@@ -1,5 +1,5 @@
 from django import forms
-from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 from .models import ToDoList, Projects
 
@@ -20,4 +20,17 @@ class SearchForm(forms.Form):
 class ProjectsForm(forms.ModelForm):
     class Meta:
         model = Projects
-        exclude = []
+        exclude = ['user']
+
+
+class ProjectUserForm(forms.ModelForm):
+    user = forms.ModelMultipleChoiceField(widget=forms.CheckboxSelectMultiple, queryset=User.objects.all(),
+                                          label="Пользователи")
+
+    def __init__(self, request, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['user'].queryset = User.objects.all()
+
+    class Meta:
+        model = Projects
+        fields = ('user',)

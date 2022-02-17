@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 
@@ -19,7 +20,7 @@ class TypeChoice(models.Model):
 
 
 class ToDoList(models.Model):
-    project = models.ForeignKey('todolist.Projects', on_delete=models.PROTECT,
+    project = models.ForeignKey('todolist.Projects', on_delete=models.CASCADE,
                                 related_name='project',
                                 verbose_name='Проект')
     aim = models.CharField(max_length=200, null=False, blank=False, verbose_name='Задача',
@@ -51,6 +52,7 @@ class Projects(models.Model):
                              validators=(MaxLengthValidator(200), MinLengthValidator(5)))
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Описание',
                                    validators=(MaxLengthValidator(200), MinLengthValidator(5)))
+    user = models.ManyToManyField(get_user_model(), related_name='user_project', verbose_name='Пользователь')
 
     def __str__(self):
         return f'{self.title}'

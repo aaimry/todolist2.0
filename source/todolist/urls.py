@@ -4,7 +4,9 @@ from .views import (
     TrackerCheckListView,
     TrackerDeleteView,
     TrackerUpdateView,
-    TrackerCreateView, ProjectView, CheckProjectView, ProjectCreateView, DeleteProjectView, UpdateProjectView)
+    TrackerCreateView, ProjectView, CheckProjectView, ProjectCreateView, DeleteProjectView, UpdateProjectView,
+    UserInProjectView,
+)
 
 app_name = 'tracker'
 
@@ -19,4 +21,5 @@ urlpatterns = [
     path('project/check/<int:pk>/', TrackerCheckListView.as_view(), name='list_check'),
     path('project/check/<int:pk>/update', TrackerUpdateView.as_view(), name='list_update'),
     path('project/check/<int:pk>/delete', TrackerDeleteView.as_view(), name='list_delete'),
+    path('project/<int:pk>/user/update', UserInProjectView.as_view(), name='user_update')
 ]
