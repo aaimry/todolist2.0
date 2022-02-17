@@ -91,4 +91,4 @@ class UserInProjectView(PermissionRequiredMixin, UpdateView):
         return form_class(self.request, **self.get_form_kwargs())
 
     def get_success_url(self):
-        return reverse('tracker:project_check', kwargs={'pk': self.object.pk})
+        return reverse('tracker:project_check', kwargs={'pk': self.object.get('pk')})

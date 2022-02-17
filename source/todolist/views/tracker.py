@@ -1,6 +1,6 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -51,13 +51,19 @@ class TrackerCreateView(PermissionRequiredMixin, CreateView):
     permission_required = "todolist.add_todolist"
 
     def has_permission(self):
-        todolist = get_object_or_404(ToDoList, id=self.kwargs.get('pk'))
-        return super().has_permission() and self.request.user in todolist.project.user.all()
+        project = get_object_or_404(Projects, id=self.kwargs.get('pk'))
+        return super().has_permission() and (self.request.user in project.user.all())
 
     def form_valid(self, form):
-        project = get_object_or_404(Projects, pk=self.kwargs.get('pk'))
-        form.instance.project = project
-        return super().form_valid(form)
+        project = get_object_or_404(Projects, id=self.kwargs.get('pk'))
+        self.todolist = form.save(commit=False)
+        self.todolist.project = project
+        self.todolist.save()
+        form.save_m2m()
+        return self.get_success_url()
+
+    def get_success_url(self):
+        return redirect('tracker:list_check', pk=self.todolist.id)
 
 
 class TrackerCheckListView(DetailView):
@@ -65,7 +71,6 @@ class TrackerCheckListView(DetailView):
     model = ToDoList
 
     def get_context_data(self, **kwargs):
-        print(kwargs)
         context = super().get_context_data(**kwargs)
         check_list = get_object_or_404(ToDoList, pk=kwargs.get('object').id)
         context['check_list'] = check_list
@@ -80,8 +85,11 @@ class TrackerUpdateView(PermissionRequiredMixin, UpdateView):
     permission_required = "todolist.change_todolist"
 
     def has_permission(self):
-        todolist = get_object_or_404(ToDoList, id=self.kwargs.get('pk'))
+        todolist = get_object_or_404(ToDoList, pk=self.kwargs.get('pk'))
         return super().has_permission() and self.request.user in todolist.project.user.all()
+
+    def get_success_url(self):
+        return reverse('tracker:project_check', kwargs={'pk': self.object.project.pk})
 
 
 class TrackerDeleteView(PermissionRequiredMixin, DeleteView):
