@@ -1,43 +1,46 @@
 {% extends 'base.html' %}
 {% block nav %}
-    {% if user.is_authenticated %}
+    {% if perms.todolist.add_projects and user in check_list.project.user.all %}
         <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{% url 'tracker:project_add' %}">Добавить проект</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'tracker:index' %}">Просмотреть все задачи</a>
-        </li>
-    {% else %}
+    {% endif %}
+    {% if user.is_authenticated %}
         <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{% url 'tracker:index' %}">Просмотреть все задачи</a>
         </li>
     {% endif %}
 {% endblock %}
 {% block content %}
-    <div class="container">
-        <h1 class="text-start">Проекты:</h1>
-        {% for project in projects %}
-            <div class="card mb-3 w-50 text-start">
-                <div class="card-body">
-                    <h3> {{ project.title }}</h3>
-                    <h4>{{ project.description }}</h4>
-                    <h4>{{ project.start_date }} - {{ project.end_date }}</h4>
-                    <div class=" btn-group">
-                        <a class="btn btn-primary text-light" style="text-decoration: none"
-                           href="{% url 'tracker:project_check' project.pk %}">Просмотреть
-                            проект</a>
-                        <br>
-                        {% if perms.todolist.delete_projects %}
-                            <a class="btn btn-danger text-light" style="text-decoration: none"
-                               href="{% url 'tracker:project_delete' project.pk %}">Удалить
+    {% if user.is_authenticated %}
+        <div class="container">
+            <h1 class="text-start">Проекты:</h1>
+            {% for project in projects %}
+                <div class="card mb-3 w-50 text-start">
+                    <div class="card-body">
+                        <h3> {{ project.title }}</h3>
+                        <h4>{{ project.description }}</h4>
+                        <h4>{{ project.start_date }} - {{ project.end_date }}</h4>
+                        <div class=" btn-group">
+                            <a class="btn btn-primary text-light" style="text-decoration: none"
+                               href="{% url 'tracker:project_check' project.pk %}">Просмотреть
                                 проект</a>
-                        {% endif %}
+                            <br>
+                            {% if perms.todolist.delete_projects %}
+                                <a class="btn btn-danger text-light" style="text-decoration: none"
+                                   href="{% url 'tracker:project_delete' project.pk %}">Удалить
+                                    проект</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
-    </div>
+            {% endfor %}
+        </div>
+        </div>
+    {% else %}
+        <br>
+        <h3>Войдите или зарегистрируйтесь, чтобы получить доступ к ресурсам</h3>
+    {% endif %}
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}

@@ -2,30 +2,32 @@
 
 {% block title %} Check aim {{ aim_list.pk }} {% endblock %}
 {% block nav %}
-{% if perms.todolist.change_todolist and user in check_list.project.user.all %}
+    {% if perms.todolist.change_todolist and user in check_list.project.user.all %}
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'tracker:list_update' check_list.pk %}">Изменить</a>
+        </li>
+    {% endif %}
+    {% if perms.todolist.delete_todolist and user in check_list.project.user.all %}
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'tracker:list_delete' check_list.pk %}">Удалить</a>
+        </li>
+    {% endif %}
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'tracker:list_update' check_list.pk %}">Изменить</a>
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:project_check' check_list.project.pk %}">Назад</a>
     </li>
-{% endif %}
-{% if perms.todolist.delete_todolist and user in check_list.project.user.all %}
-    <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'tracker:list_delete' check_list.pk %}">Удалить</a>
-    </li>
-{% endif %}
-<li class="nav-item">
-    <a class="nav-link" aria-current="page" href="{% url 'tracker:project_check' check_list.project.pk %}">Назад</a>
-</li>
 {% endblock %}
 {% block content %}
-    <h1>{{ check_list.aim }}</h1>
-    <h3>Тип:
-        {% for type in check_list.type.all %}
-            {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
-        {% endfor %}</h3>
-    {% if aim_list.description == '' %}
-        <h3>Описание отсутствует</h3>
-    {% else %}
-        <h3>Описание: {{ check_list.description }}</h3>
-        <h3>Статус: {{ check_list.status }}</h3>
+    {% if perms.todolist.add_todolist and user in check_list.project.user.all %}
+        <h1>{{ check_list.aim }}</h1>
+        <h3>Тип:
+            {% for type in check_list.type.all %}
+                {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
+            {% endfor %}</h3>
+        {% if aim_list.description == '' %}
+            <h3>Описание отсутствует</h3>
+        {% else %}
+            <h3>Описание: {{ check_list.description }}</h3>
+            <h3>Статус: {{ check_list.status }}</h3>
+        {% endif %}
     {% endif %}
 {% endblock %}

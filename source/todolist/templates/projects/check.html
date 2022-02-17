@@ -37,23 +37,27 @@
         {% endif %}
     {% endif %}
     <br>
-    <h3>Задачи проекта: </h3>
-    <div class="container">
-        <div class="row justify-content-between">
-            {% for aim in projects.project.all %}
-                <div class="card mb-3" style="width: 20rem;">
-                    <div class="card-body">
-                        <p>{{ aim.aim }}</p>
-                        <p>Стасус: {{ aim.status }}</p>
-                        <p>Тип:
-                            {% for type in aim.type.all %}
-                                {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
-                            {% endfor %}</p>
-                        <a href="{% url 'tracker:list_check' aim.pk %}">Просмотреть</a>
+    {% if perms.todolist.add_todolist and user in check_project.user.all %}
+        <h3>Задачи проекта: </h3>
+        <div class="container">
+            <div class="row justify-content-between">
+                {% for aim in projects.project.all %}
+                    <div class="card mb-3" style="width: 20rem;">
+                        <div class="card-body">
+                            <p>{{ aim.aim }}</p>
+                            <p>Стасус: {{ aim.status }}</p>
+                            <p>Тип:
+                                {% for type in aim.type.all %}
+                                    {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
+                                {% endfor %}</p>
+                            <a href="{% url 'tracker:list_check' aim.pk %}">Просмотреть</a>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% else %}
+        <h3>Задачи недоступны для просмотра</h3>
+    {% endif %}
 {% endblock %}
 
