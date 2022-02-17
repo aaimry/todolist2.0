@@ -2,17 +2,19 @@
 
 {% block title %} Check aim {{ aim_list.pk }} {% endblock %}
 {% block nav %}
-    {% if user.is_authenticated %}
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'tracker:list_update' check_list.pk %}">Изменить</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'tracker:list_delete' check_list.pk %}">Удалить</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'tracker:project_check' check_list.project.pk %}">Назад</a>
-        </li>
-    {% endif %}
+{% if perms.todolist.change_todolist and user in check_list.project.user.all %}
+    <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:list_update' check_list.pk %}">Изменить</a>
+    </li>
+{% endif %}
+{% if perms.todolist.delete_todolist and user in check_list.project.user.all %}
+    <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:list_delete' check_list.pk %}">Удалить</a>
+    </li>
+{% endif %}
+<li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{% url 'tracker:project_check' check_list.project.pk %}">Назад</a>
+</li>
 {% endblock %}
 {% block content %}
     <h1>{{ check_list.aim }}</h1>

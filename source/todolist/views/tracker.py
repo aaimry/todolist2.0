@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -44,10 +44,15 @@ class IndexView(ListView):
             return self.form.cleaned_data.get("search")
 
 
-class TrackerCreateView(LoginRequiredMixin, CreateView):
+class TrackerCreateView(PermissionRequiredMixin, CreateView):
     model = ToDoList
     form_class = ToDoListForm
     template_name = 'tracker/todolist_create.html'
+    permission_required = "todolist.add_todolist"
+
+    def has_permission(self):
+        todolist = get_object_or_404(ToDoList, id=self.kwargs.get('pk'))
+        return super().has_permission() and self.request.user in todolist.project.user.all()
 
     def form_valid(self, form):
         project = get_object_or_404(Projects, pk=self.kwargs.get('pk'))
@@ -67,17 +72,27 @@ class TrackerCheckListView(DetailView):
         return context
 
 
-class TrackerUpdateView(LoginRequiredMixin, UpdateView):
+class TrackerUpdateView(PermissionRequiredMixin, UpdateView):
     form_class = ToDoListForm
     template_name = "tracker/updatelist.html"
     model = ToDoList
     context_object_name = 'aim_list'
+    permission_required = "todolist.change_todolist"
+
+    def has_permission(self):
+        todolist = get_object_or_404(ToDoList, id=self.kwargs.get('pk'))
+        return super().has_permission() and self.request.user in todolist.project.user.all()
 
 
-class TrackerDeleteView(LoginRequiredMixin, DeleteView):
+class TrackerDeleteView(PermissionRequiredMixin, DeleteView):
     model = ToDoList
     template_name = "tracker/todolist_delete.html"
     context_object_name = 'aim_list'
+    permission_required = "todolist.delete_todolist"
+
+    def has_permission(self):
+        todolist = get_object_or_404(ToDoList, id=self.kwargs.get('pk'))
+        return super().has_permission() and self.request.user in todolist.project.user.all()
 
     def get_success_url(self):
         return reverse('tracker:project_check', kwargs={'pk': self.object.project.pk})

@@ -15,11 +15,11 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        <h1 class="text-start">Projects:</h1>
+        <h1 class="text-start">Проекты:</h1>
         {% for project in projects %}
             <div class="card mb-3 w-50 text-start">
                 <div class="card-body">
-                    <h3>{{ project.title }}</h3>
+                    <h3> {{ project.title }}</h3>
                     <h4>{{ project.description }}</h4>
                     <h4>{{ project.start_date }} - {{ project.end_date }}</h4>
                     <div class=" btn-group">
@@ -27,7 +27,7 @@
                            href="{% url 'tracker:project_check' project.pk %}">Просмотреть
                             проект</a>
                         <br>
-                        {% if user.is_authenticated %}
+                        {% if perms.todolist.delete_projects %}
                             <a class="btn btn-danger text-light" style="text-decoration: none"
                                href="{% url 'tracker:project_delete' project.pk %}">Удалить
                                 проект</a>

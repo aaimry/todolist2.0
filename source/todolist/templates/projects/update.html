@@ -2,12 +2,15 @@
 {% block title %}Update project {% endblock %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{% url 'tracker:project_check' projects.pk %}">Вернуться к проектам</a>
+        <a class="nav-link" aria-current="page" href="{% url 'tracker:project_check' projects.pk %}">Вернуться к
+            проектам</a>
     </li>
 {% endblock %}
 {% block content %}
-    <h1>Редактировать проект:</h1>
-    <form method="post">
-        {% include 'partial/form.html' with button_text='Update'%}
-    </form>
+    <div class="container text-start">
+        <h1>Редактировать проект:</h1>
+        <form method="post">
+            {% include 'partial/form.html' with button_text='Update' %}
+        </form>
+    </div>
 {% endblock %}
