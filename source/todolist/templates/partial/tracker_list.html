@@ -1,0 +1,21 @@
+<h2>Задачи:</h2>
+<div class="container">
+    <div class="row justify-content-between">
+        {% for aim in aim_list %}
+            <div class="card mb-3" style="width: 20rem;">
+                <div class="card-body">
+                    <p>{{ aim.aim }}</p>
+                    <p>Стасус: {{ aim.status }}</p>
+                    <p>Тип:
+                        {% for type in aim.type.all %}
+                            {{ type.type_obj }}{% if not forloop.last %}, {% else %}. {% endif %}
+                        {% endfor %}</p>
+                    <a href="{% url 'tracker:list_check' aim.pk %}">Просмотреть</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+{% endif %}
