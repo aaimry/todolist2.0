@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container text-start" style="font-size: 25px">
+    <h1>Cписок пользователей</h1>
+    {% for user in users %}
+        <p><a style="text-decoration: none" href="{% url 'accounts:user_profile' user.id %}">{{ user.username }}</a></p>
+    {% endfor %}
+    </div>
+{% endblock content %}
