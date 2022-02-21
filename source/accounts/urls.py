@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
-from accounts.views import login_view, logout_view, RegisterView
+from accounts.views import login_view, logout_view, RegisterView, UserProfileView, UserListView
 
 
 app_name = 'accounts'
@@ -11,7 +11,9 @@ app_name = 'accounts'
 urlpatterns = [
     path('login/', LoginView.as_view(template_name="login.html"), name="login"),
     path('logout/', LogoutView.as_view(), name="logout"),
-    path('register/', RegisterView.as_view(), name="register")
+    path('register/', RegisterView.as_view(), name="register"),
+    path('<int:pk>/', UserProfileView.as_view(), name='user_profile'),
+    path('users/', UserListView.as_view(), name='users')
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
