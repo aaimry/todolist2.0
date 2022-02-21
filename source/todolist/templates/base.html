@@ -27,11 +27,23 @@
                         <a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Войти</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:register'%}?next={{ request.get_full_path }}">Регистрация</a>
+                        <a class="nav-link" href="{% url 'accounts:register' %}?next={{ request.get_full_path }}">Регистрация</a>
                     </li>
-                {% else %}
+                {% endif %}
+                {% if user.is_authenticated and perms.accounts.view_profile %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">{{ user.username }} | Выйти</a>
+                        <a class="nav-link " href="{% url "accounts:users" %}">Пользователи</a>
+                    </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'accounts:user_profile' user.id %}">Профиль {{ user.username }}'a </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">{{ user.username }} |
+                            Выйти</a>
                     </li>
                 {% endif %}
             </ul>

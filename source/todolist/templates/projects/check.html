@@ -29,7 +29,7 @@
     {% else %}
         <h3>Пользователи:</h3>
         {% for user in check_project.user.all %}
-            <p>{{ user.username }}</p>
+            <p><a href="{% url 'accounts:user_profile' user.id %}">{{ user.username }}</a></p>
         {% endfor %}
         {% if perms.auth.add_user and user in check_project.user.all %}
             <a class="btn btn-primary" href="{% url 'tracker:user_update' check_project.pk %}">Изменить
