@@ -18,7 +18,5 @@
             {% endif %}
         </div>
     </div>
-    {% if user_object in user_object.user_project.projects %}
-        {% include 'partial/projects_list.html' %}
-    {% endif %}
+        {% include 'partial/projects_list.html' with projects=user_object.user_project.all %}
 {% endblock %}
