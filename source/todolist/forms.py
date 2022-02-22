@@ -27,10 +27,6 @@ class ProjectUserForm(forms.ModelForm):
     user = forms.ModelMultipleChoiceField(widget=forms.CheckboxSelectMultiple, queryset=User.objects.all(),
                                           label="Пользователи")
 
-    def __init__(self, request, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['user'].queryset = User.objects.all().exclude(username=request.user.username)
-
     class Meta:
         model = Projects
         fields = ('user',)

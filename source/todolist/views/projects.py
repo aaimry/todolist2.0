@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import  PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView, DeleteView, UpdateView
 from django.shortcuts import get_object_or_404
@@ -75,19 +75,14 @@ class DeleteProjectView(PermissionRequiredMixin, DeleteView):
 
 
 class UserInProjectView(PermissionRequiredMixin, UpdateView):
-    permission_required = 'auth.add_user'
     form_class = ProjectUserForm
-    model = Projects
     template_name = 'user/update.html'
-    context_object_name = 'project'
+    model = Projects
+    permission_required = 'todolist.can_add_users_to_project'
 
     def has_permission(self):
-        return super().has_permission() and self.request.user in self.get_object().user.all()
-
-    def get_form(self, form_class=None):
-        if form_class is None:
-            form_class = self.get_form_class()
-        return form_class(self.request, **self.get_form_kwargs())
+        project = get_object_or_404(Projects, id=self.kwargs.get('pk'))
+        return super().has_permission() and self.request.user in project.user.all()
 
     def get_success_url(self):
-        return reverse('tracker:project_check', kwargs={'pk': self.object.get('pk')})
+        return reverse('tracker:project_check', kwargs={'pk': self.object.pk})
