@@ -66,7 +66,7 @@ class UserProfileView(DetailView):
 
 
 class UserListView(PermissionRequiredMixin, ListView):
-    permission_required = 'accounts.view_profile'
+    permission_required = 'accounts.can_view_profiles'
     template_name = 'users.html'
     model = get_user_model()
     context_object_name = 'users'

@@ -14,4 +14,6 @@ class Profile(models.Model):
     class Meta:
         verbose_name = 'Профиль'
         verbose_name_plural = 'Профили'
-
+        permissions = [
+            ('can_view_profiles', 'Может смотреть профили')
+        ]

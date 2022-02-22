@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView, DeleteView, UpdateView
 from django.shortcuts import get_object_or_404
@@ -7,7 +7,7 @@ from todolist.forms import ProjectsForm, ProjectUserForm
 from todolist.models import Projects
 
 
-class ProjectView(ListView):
+class ProjectView(LoginRequiredMixin, ListView):
     model = Projects
     context_object_name = "projects"
     template_name = 'projects/projects.html'

@@ -30,7 +30,7 @@
                         <a class="nav-link" href="{% url 'accounts:register' %}?next={{ request.get_full_path }}">Регистрация</a>
                     </li>
                 {% endif %}
-                {% if user.is_authenticated and perms.accounts.view_profile %}
+                {% if user.is_authenticated and perms.accounts.can_view_profiles %}
                     <li class="nav-item">
                         <a class="nav-link " href="{% url "accounts:users" %}">Пользователи</a>
                     </li>

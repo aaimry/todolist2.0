@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
@@ -8,7 +8,7 @@ from todolist.forms import ToDoListForm, SearchForm
 from todolist.models import ToDoList, Projects
 
 
-class IndexView(ListView):
+class IndexView(LoginRequiredMixin, ListView):
     model = ToDoList
     context_object_name = "aim_list"
     template_name = "tracker/todolist.html"
