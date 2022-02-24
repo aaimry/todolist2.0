@@ -81,7 +81,6 @@ class UserInProjectView(PermissionRequiredMixin, UpdateView):
     permission_required = 'todolist.can_add_users_to_project'
 
     def has_permission(self):
-        project = get_object_or_404(Projects, id=self.kwargs.get('pk'))
         return super().has_permission()
 
     def get_success_url(self):
