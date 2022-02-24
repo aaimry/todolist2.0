@@ -1,22 +1,32 @@
 {% extends 'base.html' %}
+{% block nav %}
+    {% if user_object == user %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:update_user' %}">Редактирвоать профиль</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:change_password' %}">Изменить пароль</a>
+        </li>
+    {% endif %}
+{% endblock %}
 {% block content %}
-    <div class="row ">
-        <div class="w-50">
-            <div class="bio">
-            <p><strong>Профиль пользователя:</strong> {{ user_object.username }}</p>
-            <p><strong>Username:</strong>{{ user_object.username }}</p>
-            <p><strong>First name:</strong>{% if user_object.first_name  %}{{ user_object.first_name }}{% else %}Отсутсвует{% endif %}</p>
-            <p><strong>Last name:</strong>{% if user_object.last_name  %}{{ user_object.last_name }}{% else %}Отсутсвует{% endif %}</p>
-            <p><strong>Email:</strong>{{ user_object.email }}</p>
-            <p><strong>GitHub:</strong>{% if user_object.profile.githubLink %} }{{ user_object.profile.githubLink }} {% else %}Отсутствует {% endif %}</p>
-            <p><strong>About:</strong>{% if user_object.profile.description %}{{ user_object.profile.description }}{% else %}Отсутствует{% endif %}</p>
-        </div>
-        </div>
-        <div class="w-50">
-            {% if user_object.profile.photo %}
-                <img  src="{{ user_object.profile.photo.url }}" alt="user avatar">
-            {% endif %}
-        </div>
+    <div class="container mb-5 text-start" style="color: #020142">
+        <br>
+        {% if user_object.profile.photo %}
+            <img class="cart-img-top" style="height: 400px; width: 400px" src="{{ user_object.profile.photo.url }}"
+                 alt="user avatar">
+        {% endif %}
+        <p><strong>Профиль пользователя:</strong> {{ user_object.username }}</p>
+        <p><strong>Username:</strong>{{ user_object.username }}</p>
+        <p><strong>First name:</strong>{% if user_object.first_name %}{{ user_object.first_name }}{% else %}
+            Отсутсвует{% endif %}</p>
+        <p><strong>Last name:</strong>{% if user_object.last_name %}{{ user_object.last_name }}{% else %}
+            Отсутсвует{% endif %}</p>
+        <p><strong>Email:</strong>{{ user_object.email }}</p>
+        <p><strong>GitHub:</strong>{% if user_object.profile.githubLink %} }
+            {{ user_object.profile.githubLink }} {% else %}Отсутствует {% endif %}</p>
+        <p><strong>About:</strong>{% if user_object.profile.description %}
+            {{ user_object.profile.description }}{% else %}Отсутствует{% endif %}</p>
     </div>
-        {% include 'partial/projects_list.html' with projects=user_object.user_project.all %}
+    {% include 'partial/projects_list.html' with projects=user_object.user_project.all %}
 {% endblock %}
