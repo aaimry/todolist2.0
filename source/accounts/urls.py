@@ -1,9 +1,8 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
-from accounts.views import RegisterView, UserProfileView, UserListView
+from accounts.views import RegisterView, UserProfileView, UserListView, UserPasswordChangeView, UpdateUserView
 
-from source.accounts.views import UserPasswordChangeView, UpdateUserView
 
 app_name = 'accounts'
 
