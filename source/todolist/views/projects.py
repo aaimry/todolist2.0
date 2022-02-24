@@ -82,7 +82,7 @@ class UserInProjectView(PermissionRequiredMixin, UpdateView):
 
     def has_permission(self):
         project = get_object_or_404(Projects, id=self.kwargs.get('pk'))
-        return super().has_permission() and self.request.user in project.user.all()
+        return super().has_permission()
 
     def get_success_url(self):
         return reverse('tracker:project_check', kwargs={'pk': self.object.pk})
